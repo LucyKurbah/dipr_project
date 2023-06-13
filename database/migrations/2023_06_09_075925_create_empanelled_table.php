@@ -16,6 +16,10 @@ class CreateEmpanelledTable extends Migration
         Schema::create('empanelled', function (Blueprint $table) {
             $table->id();
             $table->string('news_name');
+            $table->foreignId('newspaper_type_id')
+                ->constrained('newspaper_type')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

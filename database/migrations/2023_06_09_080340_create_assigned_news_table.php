@@ -17,7 +17,14 @@ class CreateAssignedNewsTable extends Migration
             $table->id();
             $table->integer('news_id');
             $table->integer('no_of_entries');
-            $table->foreignId('ad_id');
+            $table->foreignId('advertisement_id')
+                ->constrained('advertisement')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');  
+            $table->foreignId('empanelled_id')
+                ->constrained('empanelled')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');  
             $table->timestamps();
         });
     }

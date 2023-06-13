@@ -18,7 +18,10 @@ class CreateBillTableTable extends Migration
             $table->integer('bill_no');
             $table->date('bill_date');
             $table->integer('sv_no');
-            $table->integer('bill_type_id');
+            $table->foreignId('advertisement_id')
+                ->constrained('advertisement');  
+            $table->foreignId('bill_type_id')
+                ->constrained('bill_type');  
             $table->timestamps();
         });
     }
@@ -33,4 +36,3 @@ class CreateBillTableTable extends Migration
         Schema::dropIfExists('bill_table');
     }
 }
-$table->foreignId('ad_id');

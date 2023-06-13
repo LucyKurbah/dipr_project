@@ -18,7 +18,10 @@ class CreateAppTrackTable extends Migration
             $table->integer('next_user_id');
             $table->date('process_date');
             $table->string('process_flag',2);
-            $table->foreignId('ad_id');
+            $table->foreignId('advertisement_id')
+                ->constrained('advertisement')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');  
             $table->timestamps();
         });
     }

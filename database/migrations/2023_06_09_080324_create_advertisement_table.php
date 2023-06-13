@@ -28,7 +28,18 @@ class CreateAdvertisementTable extends Migration
             $table->integer('release_order_no');
             $table->string('remarks');
             $table->integer('ad_type');
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');       
+            $table->foreignId('ad_category_id') //Notice. tender
+                ->constrained('ad_category')
+                ->onUpdate('cascade')
+                ->onDelete('cascade'); 
+            $table->foreignId('ad_type_id') // Display or classified
+                ->constrained('ad_type')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

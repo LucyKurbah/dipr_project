@@ -15,9 +15,9 @@ class CreateSidebarTable extends Migration
     {
         Schema::create('sidebar', function (Blueprint $table) {
             $table->id();
-            $table->string('menu_name');
-            $table->string('menu_inactive',2);
-            $table->integer('menu_order');
+            $table->string('sidebar_name');
+            $table->string('sidebar_inactive',2);
+            $table->integer('sidebar_order');
             $table->timestamps();
         });
     }
