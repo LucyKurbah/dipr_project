@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class NewsType extends Model
 {
     use HasFactory;
+    protected $table = 'news_type';
+
+    public function empanelled()
+    {
+        return $this->hasMany(Empanelled::class);
+    }
+
 }

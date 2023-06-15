@@ -15,7 +15,6 @@ class CreateAdvertisementTable extends Migration
     {
         Schema::create('advertisement', function (Blueprint $table) {
             $table->id();
-            $table->string('dept_name');
             $table->string('hod');
             $table->date('issue_date');
             $table->date('published_date');
@@ -30,6 +29,10 @@ class CreateAdvertisementTable extends Migration
             $table->integer('ad_type');
             $table->foreignId('user_id')
                 ->constrained('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');  
+            $table->foreignId('dept_id')    //Ad from which Dept
+                ->constrained('department')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');       
             $table->foreignId('ad_category_id') //Notice. tender

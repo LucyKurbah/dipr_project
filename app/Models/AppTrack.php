@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BillType extends Model
+class AppTrack extends Model
 {
     use HasFactory;
-    protected $table = 'bill_type';
+    protected $table ='app_track';
 
-    public function bill()
+    public function advertisement()
     {
-        return $this->hasMany(Bill::class);
+        return $this->belongsTo(Advertisement::class);
     }
 }
